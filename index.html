@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API de Rick and Morty</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./src/style/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>API de Rick and Morty</h1>
+        <div id="divBuscar">
+            <input id="inputBuscar" type="search" placeholder="&nbsp;&nbsp;Pesquise">
+            <button id="botaoBuscar"> <i class="fa fa-search"></i></button>
+        </div>
+    </header>
+    <main>
+        <div class="personagem">
+            <img src="" alt="">
+            <div class="nomePersonagem">
+                <article>
+                    <span>Rick</span>
+                </article>
+            </div>
+        </div>
+    </main>
+    <div class="conteinerImagem">
+        <img class="logoRickAndMorty" src="./src/image/logo-rick-and-morty-portal.png" alt="logo-rick-and-morty-portal" srcset="">
+    </div>
+    <footer>
+        <div class="contadorPersonagens">
+            <p>PERSONAGENS:<span>XX</span> </p>
+            <p>LOCALIZAÇÕES:<span>XX</span> </p>
+            <p>EPISÓDIOS:<span>XX</span> </p>
+        </div>
+        <div class="textoDireitosAutorais">
+            <span>Desenvolvido por: <strong>Emanoel Saraiva da Silva</strong> em 2023</span>
+        </div>
+    </footer>
+    <script src="./src/scrypt/api.js"></script>
+</body>
+</html>
