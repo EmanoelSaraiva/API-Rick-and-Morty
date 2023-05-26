@@ -14,27 +14,23 @@
         <h1>API de Rick and Morty</h1>
         <div id="divBuscar">
             <input id="inputBuscar" type="search" placeholder="&nbsp;&nbsp;Pesquise">
-            <button id="botaoBuscar"> <i class="fa fa-search"></i></button>
+            <button type="button" id="botaoBuscar"> <i class="fa fa-search"></i></button>
         </div>
     </header>
-    <main>
-        <div class="personagem">
-            <img src="" alt="">
-            <div class="nomePersonagem">
-                <article>
-                    <span>Rick</span>
-                </article>
-            </div>
+    <main >
+        <div id="containerPersonagens">
+
+        </div>
+        
+        <div class="conteinerImagem">
+            <img class="logoRickAndMorty" src="./src/image/logo-rick-and-morty-portal.png" alt="logo-rick-and-morty-portal" srcset="">
         </div>
     </main>
-    <div class="conteinerImagem">
-        <img class="logoRickAndMorty" src="./src/image/logo-rick-and-morty-portal.png" alt="logo-rick-and-morty-portal" srcset="">
-    </div>
     <footer>
         <div class="contadorPersonagens">
-            <p>PERSONAGENS:<span>XX</span> </p>
-            <p>LOCALIZAÇÕES:<span>XX</span> </p>
-            <p>EPISÓDIOS:<span>XX</span> </p>
+            <p>PERSONAGENS:<span id="quantidadePersonagens">XX</span> </p>
+            <p>LOCALIZAÇÕES:<span id="localizacao">XX</span> </p>
+            <p>EPISÓDIOS:<span id="episodios">XX</span> </p>
         </div>
         <div class="textoDireitosAutorais">
             <span>Desenvolvido por: <strong>Emanoel Saraiva da Silva</strong> em 2023</span>

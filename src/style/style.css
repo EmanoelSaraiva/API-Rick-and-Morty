@@ -83,3 +83,24 @@ footer {
     font-size: 14px;
     margin-top: 4rem;
 }
+
+.personagem{
+    display: flex;
+    border-radius: 10px;
+    background-color: #3C3E44;
+    width: 30vw;
+}
+
+.personagem img{
+    width: 200px;
+    height: 200px;
+}
+
+#containerPersonagens{
+    margin-top: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-evenly;
+}
