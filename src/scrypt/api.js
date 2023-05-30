@@ -1,47 +1,115 @@
 window.onload = () => {
+  load("/character/?page=1");
   contadorRodade();
-  mostrarPersonagens();
 };
 
 const api = axios.create({
   baseURL: "https://rickandmortyapi.com/api",
 });
 
-let paginaAtual = 1;
+const botaoProximo = document.getElementById("botaoProximo");
 
-function mostrarPersonagens() {
-  api.get("/character").then((res) => {
-    const personagens = res.data.results;
-    const informacoes = res.data.info;
-    let cards = document.getElementById("containerPersonagens");
-    cards.innerHTML = "";
+let informacoes;
+let proximaPagina = null;
+let paginaAnterior = null;
 
-    personagens.forEach((personagen) => {
-      cards.innerHTML += `<div  class="personagem">
+async function renderizarPersonagem(personagen) {
+  let cards = document.getElementById("containerPersonagens");
+
+  let statusCor = "";
+  let statusTexto = "";
+
+  if (personagen.status === "Alive") {
+    statusCor = "#56CD42";
+    statusTexto = "Vivo";
+  } else if (personagen.status === "Dead") {
+    statusCor = "#CD4242";
+    statusTexto = "Morto";
+  } else {
+    statusCor = "#BBBBBB";
+    statusTexto = "Desconhecido";
+  }
+
+  const episodioNResponde = await axios.get(personagen.episode[0]);
+  const episodioNome = episodioNResponde.data.name;
+
+  cards.innerHTML += `
+    <div  class="personagem">
       <img src="${personagen.image}" alt="">
       <div class="nomePersonagem">
-          <article>
-              <span>${personagen.name}</span>
-          </article>
-          <span>${personagen.status}</span><span>-${personagen.species}</span>
+      <div class="statusPersonagem">
+        <article>
+          <span>${personagen.name}</span>
+        </article>
+        <div>
+          <div class="statusCirculo" style="background-color: ${statusCor};"></div>
+          <span>${statusTexto} - ${personagen.species}</span>
+        </div>
       </div>
-  </div>`;
-    });
+        <div>
+          <p>Última localização conhecida:</p>
+          <span>${personagen.location.name}</span>
+        </div>
+        <div>
+          <p>Visto a última vez em:</p>
+          <span>${episodioNome}</span>
+        </div>  
+      </div>
+    </div>`;
+}
+
+function montar(personagensi) {
+  let cards = document.getElementById("containerPersonagens");
+  cards.innerHTML = "";
+
+  personagensi.forEach((personagen) => {
+    renderizarPersonagem(personagen);
   });
 }
 
-const botaoBuscar = document.getElementById("botaoBuscar");
-const buscar = document.getElementById("inputBuscar");
+function mostrarPersonagens(res) {
+  const personagens = res.results;
+  informacoes = res.info;
 
-botaoBuscar.addEventListener("click", function () {
-  const textoBusca = buscar.value;
-  mostrarPersonagens(paginaAtual, textoBusca);
+  montar(personagens);
+}
+
+function load(url, buscar = "") {
+  const buscarPersonagem = buscar ? `&name=${buscar}` : ""; // busca personagem por nome
+  api.get(url + buscarPersonagem).then((res) => {
+    const paginas = res.data;
+    proximaPagina = res.data.info.next;
+    paginaAnterior = res.data.info.prev;
+    mostrarPersonagens(paginas);
+  });
+}
+
+function pesquisar() {
+  const buscar = buscarInput.value;
+  load("/character/?page=1", buscar);
+}
+
+function mudarPagina(url) {
+  if (url != null) {
+    load(url);
+  }
+}
+
+const buscarInput = document.getElementById("inputBuscar");
+
+buscarInput.addEventListener("input", () => {
+  pesquisar();
 });
 
-buscar.addEventListener("input", function () {
-  const textoBusca = buscar.value;
-  mostrarPersonagens(paginaAtual, textoBusca);
-});
+const btnAnterior = document.getElementById("botaoAnterior");
+btnAnterior.addEventListener("click", () =>
+  mudarPagina(paginaAnterior, buscarInput.value)
+);
+
+const btnProxima = document.getElementById("botaoProximo");
+btnProxima.addEventListener("click", () =>
+  mudarPagina(proximaPagina, buscarInput.value)
+);
 
 function contadorRodade() {
   api.get("/character").then((res) => {

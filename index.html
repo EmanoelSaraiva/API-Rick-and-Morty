@@ -11,19 +11,27 @@
 </head>
 <body>
     <header>
+        <a href="https://rickandmortyapi.com" target="_blank"><img src="src/image/logo-mini.png" alt="logo-mini-rick-and-morty" srcset=""></a>
         <h1>API de Rick and Morty</h1>
         <div id="divBuscar">
             <input id="inputBuscar" type="search" placeholder="&nbsp;&nbsp;Pesquise">
-            <button type="button" id="botaoBuscar"> <i class="fa fa-search"></i></button>
+            <button type="button" id="botaoBuscar"><i class="fa fa-search"></i></button>
         </div>
     </header>
-    <main >
-        <div id="containerPersonagens">
-
-        </div>
+    <main>
         
-        <div class="conteinerImagem">
-            <img class="logoRickAndMorty" src="./src/image/logo-rick-and-morty-portal.png" alt="logo-rick-and-morty-portal" srcset="">
+        <div id="containerPersonagens">
+            
+        </div>
+
+        <div id="containerPaginacao-img">
+            <div id="paginacao">
+                <button id="botaoAnterior">Anterior</button>
+                <button id="botaoProximo">Próximo</button>
+            </div>
+            <div class="conteinerImagem">
+                <img class="logoRickAndMorty" src="./src/image/logo-rick-and-morty-portal.png" alt="logo-rick-and-morty-portal" srcset="">
+            </div>
         </div>
     </main>
     <footer>
