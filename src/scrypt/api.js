@@ -34,7 +34,7 @@ async function renderizarPersonagem(personagen) {
   const episodioNome = episodioNResponde.data.name;
 
   cards.innerHTML += `
-    <div  class="personagem">
+    <div class="personagem">
       <img src="${personagen.image}" alt="">
       <div class="nomePersonagem">
       <div class="statusPersonagem">
@@ -75,7 +75,7 @@ function mostrarPersonagens(res) {
 }
 
 function load(url, buscar = "") {
-  const buscarPersonagem = buscar ? `&name=${buscar}` : ""; // busca personagem por nome
+  const buscarPersonagem = `&name=${buscar}`;
   api.get(url + buscarPersonagem).then((res) => {
     const paginas = res.data;
     proximaPagina = res.data.info.next;
