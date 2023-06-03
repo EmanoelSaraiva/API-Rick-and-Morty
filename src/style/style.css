@@ -13,12 +13,13 @@ header{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-top: 2rem;
 }
 
 header a{
     position: absolute;
     margin-left: -93rem;
-    margin-top: -7rem;
+    margin-top: -10rem;
 }
 
 header a img{
@@ -61,7 +62,6 @@ footer {
     width: 100vw;
     height: 20vh;
     color: #ffffff;
-    position: fixed;
     bottom: 0;
     display: flex;
     flex-direction: column;
@@ -123,6 +123,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    padding-left: 12rem;
 }
 
 .nomePersonagem{
@@ -149,8 +150,6 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 10em;
-    margin-left: 10rem;
 }
 
 #paginacao{

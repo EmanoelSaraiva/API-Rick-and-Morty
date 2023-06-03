@@ -75,7 +75,7 @@ function mostrarPersonagens(res) {
 }
 
 function load(url, buscar = "") {
-  const buscarPersonagem = `&name=${buscar}`;
+  const buscarPersonagem = buscar ? `&name=${buscar}` : ""; // busca personagem por nome
   api.get(url + buscarPersonagem).then((res) => {
     const paginas = res.data;
     proximaPagina = res.data.info.next;
