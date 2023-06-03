@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "axe/name-role-value": "off",
+    "no-protocol-relative-urls": "off",
+    "disown-opener": "off"
+  }
+}
