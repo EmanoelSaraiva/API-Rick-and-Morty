@@ -102,14 +102,16 @@ buscarInput.addEventListener("input", () => {
 });
 
 const btnAnterior = document.getElementById("botaoAnterior");
-btnAnterior.addEventListener("click", () =>
-  mudarPagina(paginaAnterior, buscarInput.value)
-);
+btnAnterior.addEventListener("click", () => {
+  mudarPagina(paginaAnterior, buscarInput.value);
+  window.scrollTo(0, 0);
+});
 
 const btnProxima = document.getElementById("botaoProximo");
-btnProxima.addEventListener("click", () =>
-  mudarPagina(proximaPagina, buscarInput.value)
-);
+btnProxima.addEventListener("click", () => {
+  mudarPagina(proximaPagina, buscarInput.value);
+  window.scrollTo(0, 0);
+});
 
 function contadorRodade() {
   api.get("/character").then((res) => {
